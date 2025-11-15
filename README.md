@@ -20,6 +20,20 @@ Michael Borland and Chun-xi Wang tested the module for non-linear optimization f
 Volker Ziemann helped with implementation of coupling and calculation of radiation integrals.  
 Bernard Riemann implemented the flood fill algorithm.  
 
+**Requirements**
+
+`    ` * FPC (Free Pascal Compiler)
+
+`    ` * Lazarus IDE
+
+**Installation**
+
+`    ` git clone <rep>
+
+`    ` cd opa-4
+
+`    ` lazbuild --ws=cocoa opa4/opa.lpi
+
 **Licence**
 
 This software is licensed under the MIT License (see LICENSE file for details).
