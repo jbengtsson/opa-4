@@ -32,7 +32,7 @@ Bernard Riemann implemented the flood fill algorithm.
 
 `    ` cd opa-4
 
-`    ` lazbuild --ws=cocoa opa4/opa.lpi
+`    ` ~/fpcupdeluxe/laz_2_2_6/lazarus/lazbuild opa.lpi
 
 **Licence**
 
