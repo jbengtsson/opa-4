@@ -121,10 +121,11 @@ end;
 
 procedure TBucketView.butepsClick(Sender: TObject);
 var
-  errmsg, epsfile: string;
+  errmsg: ShortString; epsfile: string;
 begin
   epsfile:=ExtractFileName(FileName);
   epsfile:=work_dir+Copy(epsfile,0,Pos('.',epsfile)-1)+'_bucket.eps';
+  errmsg := '';
   fig.plot.PS_start(epsfile,OPAversion, errmsg);
   if length(errmsg)>0 then begin
     MessageDlg('PS export failed: '+errmsg, MtError, [mbOK],0);

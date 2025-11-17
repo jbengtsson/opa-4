@@ -1219,7 +1219,8 @@ end;
 
 procedure Ttrackp.butexportClick(Sender: TObject);
 var
-  errmsg1, errmsg2, epsfile1, epsfile2: string;
+  errmsg1, errmsg2: ShortString; epsfile1, epsfile2: string;
+
   fail: boolean;
 begin
   epsfile1:=ExtractFileName(FileName);
@@ -1227,12 +1228,14 @@ begin
   epsfile2:=epsfile1+'_adts_y'+'.eps';
   epsfile1:=epsfile1+'_adts_x'+'.eps';
   psx.plot.PS_start(epsfile1,OPAversion, errmsg1);
+    errmsg1 := '';
   fail:=(length(errmsg1)>0);
   if not fail then begin
     TushPlot(tsplotmode,1);
     psx.plot.PS_stop;
   end;
   psy.plot.PS_start(epsfile2,OPAversion, errmsg2);
+    errmsg2 := '';
   fail:=fail or (length(errmsg2)>0);
   if not fail then begin
     TushPlot(tsplotmode,2);

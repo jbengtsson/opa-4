@@ -957,7 +957,7 @@ end;
 procedure TOrbit.butpsClick(Sender: TObject);
 const plmod: array[0..2] of string[5]=('_orb_','_cor_','_mis_');
 var
-  errmsg1, errmsg2, epsfile1, epsfile2: string;
+  errmsg1, errmsg2: ShortString; epsfile1, epsfile2: string;
   fail: boolean;
 begin
   GetCorMax;
@@ -968,12 +968,14 @@ begin
   epsfile2:=epsfile1+'y'+'.eps';
   epsfile1:=epsfile1+'x'+'.eps';
   plotox.plot.PS_start(epsfile1,OPAversion, errmsg1);
+    errmsg1 := '';
   fail:=(length(errmsg1)>0);
   if not fail then begin
     plotX;
     plotox.plot.PS_stop;
   end;
   plotoy.plot.PS_start(epsfile2,OPAversion, errmsg2);
+    errmsg2 := '';
   fail:=fail or (length(errmsg2)>0);
   if not fail then begin
     plotY;

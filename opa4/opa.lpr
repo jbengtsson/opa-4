@@ -1,11 +1,11 @@
 program opa;
 
-// to get the terminal console in Windows, uncomment the lines with //WCON
+// To get the terminal console in Windows, uncomment the lines with //WCON
+// {$APPTYPE CONSOLE} //WCON
 
-  //      {$APPTYPE CONSOLE} //WCON
 uses
- // windows,  //WCON
-  Forms, Interfaces,
+  // windows,  //WCON
+  Interfaces, Forms,
   globlib,
   latfilelib,
   elemlib,
@@ -15,74 +15,60 @@ uses
   chromelelib,
   lgbeditlib,
   tracklib,
-  opamenu 	{MenuForm},
+  opamenu {MenuForm},
   opaeditor,
-    oelecreate 	{EditElemCreate},
-    oeleedit 	{EditElemSet},
-    osegedit  	{EditSegSet},
+    oelecreate {EditElemCreate},
+    oeleedit {EditElemSet},
+    osegedit {EditSegSet},
   opatexteditor {FormTxtEdt},
   opalgbedit,
-  opalinop  	{optic},
-    ostartmenu  {startsel},
-    obetenvmag  {setMatchScan},
-    omatching  	{Match},
-    omatchscan  {setMatchScan},
-    otunematrix {tuneMatrix},
-    owriteomrk  {WOMK},
-  opatunediag 	{tuneplot},
-  opamomentum 	{momentum},
-  opabucket 	{BucketView},
-  opachroma  	{Chroma},
-    chamframe  	{CHam: TFrame},
+  opalinop {optic},
+    ostartmenu {startsel},
+    obetenvmag {setEnvel},
+    omatching {Match},
+    omatchscan {setMatchScan},
+    otunematrix {TuneMatrix},
+    owriteomrk {WOMK},
+  opatunediag {TunePlot},
+  opamomentum {momentum},
+  opabucket {BucketView},
+  opachroma {Chroma},
+    chamframe {CHam: TFrame},
     ochromsvector {SVectorPlot},
-  opaorbit 	{Orbit},
-  opageometry 	{Geometry},
-  opacurrents 	{Currents},
-  opatrackps 	{trackp},
-  opatrackda  	{trackDA},
-  opatracktt  	{trackT},
-  asaux 	in '../com/asaux.pas',
-  asfigure 	in '../com/asfigure.pas' {Figure: TFrame},
-  vgraph 	in '../com/vgraph.pas',
-  conrect 	in '../com/conrect.pas', 
+  opaorbit {Orbit},
+  opageometry {Geometry},
+  opacurrents {Currents},
+  opatrackps {TrackP},
+  opatrackda {TrackDA},
+  opatracktt {TrackT},
+  asaux in '../com/asaux.pas',
+  asfigure in '../com/asfigure.pas' {Figure: TFrame},
+  vgraph in '../com/vgraph.pas',
+  conrect in '../com/conrect.pas',
   testcode;
-
 
 {$R *.res}
 
 begin
-//  ShowWindow(GetConsoleWindow, SW_SHOW); //WCON
-
-
-  Application.Scaled:=True;
+  Application.Scaled := True;
   Application.Initialize;
+
+  // Main form MUST be created first – this defines Application.MainForm.
   Application.CreateForm(TMenuForm, MenuForm);
 
-//  Application.CreateForm(TFormEdit, FormEdit);
+  // Create additional forms
   Application.CreateForm(TEditElemCreate, EditElemCreate);
   Application.CreateForm(TEditElemSet, EditElemSet);
-//  Application.CreateForm(TFormTxtEdt, FormTxtEdt);
   Application.CreateForm(TEditSegSet, EditSegSet);
-//  Application.CreateForm(Toptic, optic);
   Application.CreateForm(Tstartsel, startsel);
-//  Application.CreateForm(TsetMomentum, setMomentum);
   Application.CreateForm(TsetEnvel, setEnvel);
   Application.CreateForm(TMatch, Match);
   Application.CreateForm(TsetMatchScan, setMatchScan);
   Application.CreateForm(TWOMK, WOMK);
-//  Application.CreateForm(TChroma, Chroma);
-//  Application.CreateForm(Ttrackp, trackp);
-//  Application.CreateForm(TCurrents, Currents);
-  Application.CreateForm(TtuneMatrix, tuneMatrix);
+  Application.CreateForm(TTuneMatrix, TuneMatrix);
   Application.CreateForm(Tmomentum, momentum);
-//  Application.CreateForm(TGeometry, Geometry);
-  Application.CreateForm(Ttuneplot, tuneplot);
-//  Application.CreateForm(TtrackT, trackT);
-//  Application.CreateForm(TtrackDA, trackDA);
+  Application.CreateForm(TTunePlot, TunePlot);
   Application.CreateForm(TSVectorPlot, SVectorPlot);
-//  Application.CreateForm(TOrbit, Orbit);
-//  Application.CreateForm(TLGBedit, LGBedit);
-//  Application.CreateForm(TBucketView, BucketView);
 
   Application.Run;
 end.

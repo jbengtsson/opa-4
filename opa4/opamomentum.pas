@@ -448,12 +448,13 @@ end;
 // export the plot as eps
 procedure Tmomentum.butpsClick(Sender: TObject);
 var
-  errmsg, epsfile: string;
+  errmsg: ShortString; epsfile: string;
 begin
   epsfile:=ExtractFileName(FileName);
   epsfile:=work_dir+Copy(epsfile,0,Pos('.',epsfile)-1);
   epsfile:=epsfile+'_momentum_'+inttostr(plotmode)+'.eps';
   fig.plot.PS_start(epsfile,OPAversion, errmsg);
+    errmsg := '';
   if length(errmsg)>0 then begin
     MessageDlg('PS export failed: '+errmsg, MtError, [mbOK],0);
   end else begin
